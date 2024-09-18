@@ -74,7 +74,7 @@ type BroadcastTransactionResponse struct {
 }
 ```
 
----
+--
 
 ## CheckTransactionStatus
 
