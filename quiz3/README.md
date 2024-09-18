@@ -21,12 +21,12 @@ This module provides two core functionalities for handling blockchain transactio
 To use this module, you will need Go 1.16+ installed. You can install the required dependencies by running:
 
 ```bash
-go get github.com/weeranieb/transaction-client
+go get github.com/weeranieb/band-protocal-test/quiz3
 
 ```
 
 ## Usage
 
-## Initialization
+# Initialization
 
 To begin, you need to initialize the `Client` by providing the HTTP client and the base URL for broadcasting and checking transaction statuses.
