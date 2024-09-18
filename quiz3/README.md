@@ -4,7 +4,7 @@ This module provides two core functionalities for handling blockchain transactio
 
 1. **BroadcastTransaction**: Send a transaction to the blockchain network.
 2. **CheckTransactionStatus**: Check the status of a previously broadcasted transaction.
-3. **MonitorTransaction**: Continuously monitor until the status is marked as complete.
+<!-- 3. **MonitorTransaction**: Continuously monitor until the status is marked as complete. -->
 
 ## Table of Contents
 
@@ -115,3 +115,62 @@ Handling transaction status is crucial for ensuring that your transaction has be
 - Failed:
   - The transaction did not succeed.
   - In case of failure, the application should log the error and take corrective action.
+
+## Example Script
+
+Here is an example script that demonstrates how to broadcast a transaction and check its status with interval time 10 seconds:
+
+```go
+package main
+
+import (
+    "log"
+    "net/http"
+    "time"
+    "your-module-path/models"
+    "your-module-path/client"
+)
+
+func main() {
+    // Initialize the client
+    httpClient := &http.Client{}
+    c := client.Client{
+        HTTPClient: httpClient,
+        Broadcast:  "https://api.blockchain.com/v1/broadcast",
+        Status:     "https://api.blockchain.com/v1/status",
+    }
+
+    // Broadcast a transaction
+    broadcastReq := &models.BroadcastTransactionRequest{
+        // Fill in the request details
+    }
+
+    resp, err := c.BroadcastTransaction(broadcastReq)
+    if err != nil {
+        log.Fatalf("Failed to broadcast transaction: %v", err)
+    }
+
+    log.Printf("Transaction broadcasted with hash: %s\n", resp.TXHash)
+
+    // Poll for transaction status
+    for {
+        statusResp, err := c.CheckTransactionStatus(resp.TXHash)
+        if err != nil {
+            log.Fatalf("Failed to check transaction status: %v", err)
+        }
+
+        log.Printf("Transaction status: %s\n", statusResp.Status)
+
+        if statusResp.Status == "confirmed" {
+            log.Println("Transaction confirmed!")
+            break
+        } else if statusResp.Status == "failed" {
+            log.Println("Transaction failed!")
+            break
+        }
+
+        // Wait before checking the status again
+        time.Sleep(10 * time.Second)
+    }
+}
+```
