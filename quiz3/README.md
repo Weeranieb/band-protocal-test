@@ -12,7 +12,6 @@ This module provides two core functionalities for handling blockchain transactio
 - [Usage](#usage)
 - [BroadcastTransaction](#broadcasttransaction)
 - [CheckTransactionStatus](#checktransactionstatus)
-- [MonitorTransaction] (#monitortransaction)
 - [Transaction Status Handling](#transaction-status-handling)
 - [Example Script](#example-script)
 
@@ -78,4 +77,41 @@ type BroadcastTransactionResponse struct {
 
 ## CheckTransactionStatus
 
-The CheckTransactionStatus method allows you to check the status of a previously broadcasted transaction using its hash.
+The `CheckTransactionStatus` method allows you to check the status of a previously broadcasted transaction using its hash.
+
+```go
+func (c *Client) CheckTransactionStatus(txHash string) (*models.TransactionStatusResponse, error)
+```
+
+### Response Structure
+
+```go
+type MonitorTransactionResponse struct {
+	TXStatus string `json:"tx_status"`
+}
+```
+
+---
+
+### Transaction Status Handling
+
+Handling transaction status is crucial for ensuring that your transaction has been successfully processed on the blockchain. The following strategies can be employed for each status:
+
+- Does Not Exist:
+
+  - The client should verify if the transaction was broadcasted successfully.
+  - If the transaction does not exist, a new broadcast should be created to generate a new hash and reattempt the transaction.
+
+- Pending:
+
+  - The transaction has been broadcasted but is not yet confirmed.
+  - It’s recommended to poll the transaction status periodically using CheckTransactionStatus.
+
+- Confirmed:
+
+  - The transaction has been successfully mined and included in a block.
+  - At this point, the transaction can be considered complete.
+
+- Failed:
+  - The transaction did not succeed.
+  - In case of failure, the application should log the error and take corrective action.
