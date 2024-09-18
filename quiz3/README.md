@@ -48,4 +48,34 @@ func main() {
 }
 ```
 
-_BroadcastTransaction_
+### BroadcastTransaction
+
+The `BroadcastTransaction` method allows you to send a transaction to the blockchain. It accepts a `BroadcastTransactionRequest` object and returns a `BroadcastTransactionResponse` with the transaction hash.
+
+```go
+func (c *Client) BroadcastTransaction(req *models.BroadcastTransactionRequest) (*models.BroadcastTransactionResponse, error)
+```
+
+### Request Structure
+
+```go
+type BroadcastTransactionRequest struct {
+	Symbol    string `json:"symbol"`
+	Price     uint64 `json:"price"`
+	Timestamp uint64 `json:"timestamp"`
+}
+```
+
+### Response Structure
+
+```go
+type BroadcastTransactionResponse struct {
+	TXHash string `json:"tx_hash"`
+}
+```
+
+---
+
+## CheckTransactionStatus
+
+The CheckTransactionStatus method allows you to check the status of a previously broadcasted transaction using its hash.
