@@ -30,3 +30,22 @@ go get github.com/weeranieb/band-protocal-test/quiz3
 **Initialization**
 
 To begin, you need to initialize the `Client` by providing the HTTP client and the base URL for broadcasting and checking transaction statuses.
+
+```go
+import (
+    "net/http"
+    "github.com/weeranieb/band-protocal-test/quiz3/models"
+    "github.com/weeranieb/band-protocal-test/quiz3/client"
+)
+
+func main() {
+    httpClient := &http.Client{}
+    c := client.Client{
+        HTTPClient: httpClient,
+        Broadcast:  "https://api.blockchain.com/v1/broadcast",
+        Status:     "https://api.blockchain.com/v1/status",
+    }
+}
+```
+
+_BroadcastTransaction_

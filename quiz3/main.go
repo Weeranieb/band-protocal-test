@@ -1,10 +1,11 @@
 package main
 
 import (
-	"bandProtocol/quiz3/client"
-	"bandProtocol/quiz3/models"
 	"fmt"
 	"time"
+
+	"github.com/weeranieb/band-protocal-test/quiz3/client"
+	"github.com/weeranieb/band-protocal-test/quiz3/models"
 )
 
 func main() {

@@ -1,14 +1,15 @@
 package client
 
 import (
-	"bandProtocol/quiz3/constants"
-	"bandProtocol/quiz3/models"
 	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/weeranieb/band-protocal-test/quiz3/constants"
+	"github.com/weeranieb/band-protocal-test/quiz3/models"
 )
 
 type Client struct {

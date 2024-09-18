@@ -1,8 +1,9 @@
 package rescuechicken_test
 
 import (
-	rescuechicken "bandProtocol/quiz2/rescueChicken"
 	"testing"
+
+	rescuechicken "github.com/weeranieb/band-protocal-test/quiz2/rescueChicken"
 
 	"github.com/stretchr/testify/assert"
 )

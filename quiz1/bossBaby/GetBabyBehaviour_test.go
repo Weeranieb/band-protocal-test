@@ -1,8 +1,9 @@
 package bossbaby_test
 
 import (
-	bossbaby "bandProtocol/quiz1/bossBaby"
 	"testing"
+
+	bossbaby "github.com/weeranieb/band-protocal-test/quiz1/bossBaby"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -1,4 +1,4 @@
-module bandProtocol
+module github.com/weeranieb/band-protocal-test
 
 go 1.20
 
