@@ -27,6 +27,6 @@ go get github.com/weeranieb/band-protocal-test/quiz3
 
 ## Usage
 
-# Initialization
+**Initialization**
 
 To begin, you need to initialize the `Client` by providing the HTTP client and the base URL for broadcasting and checking transaction statuses.
